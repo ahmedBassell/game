@@ -1,0 +1,13 @@
+game:
+  build: .
+  ports:
+    - "8080:8080"
+  links:
+    - mongo
+  environment:
+    PORT: 8080 # this is optional, allows express to use process.env.PORT instead of a raw 8080
+
+mongo:
+  image: mongo
+  ports:
+    - "27017:27017"
