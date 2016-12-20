@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://mongo:27017');
 
 // Constants
-const PORT = 8080;
+const PORT = 80;
 
 // App
 const app = express();
