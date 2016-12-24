@@ -51,7 +51,7 @@ app.get('/clear', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-    console.log('hello');
+    console.log('hello again');
     res.send('hello\nYEEEEY! ^_^');
 })
 
