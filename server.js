@@ -52,7 +52,7 @@ app.get('/clear', (req, res) => {
 
 app.get('/', (req, res) => {
     console.log('hello');
-    res.send('hello');
+    res.send('hello\nYEEEEY! ^_^');
 })
 
 app.listen(PORT);
