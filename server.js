@@ -50,5 +50,9 @@ app.get('/clear', (req, res) => {
     })
 })
 
+app.get('/', (req, res) => {
+    res.send('hello');
+})
+
 app.listen(PORT);
 console.log('Running on http://localhost:' + PORT);
