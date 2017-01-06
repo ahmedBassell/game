@@ -1,0 +1,11 @@
+game:
+  ports:
+    - "3000:3000"
+  environment:
+    - NODE_ENV=production
+
+mongo:
+  volumes:
+    - ./data:/data/db
+  ports:
+    - "27017:27017"

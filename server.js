@@ -1,13 +1,15 @@
 'use strict';
 
+// Constants
 const express = require('express');
 const mongoose = require('mongoose');
+const config = require('config');
+
+const PORT = config.get('ports.port');
+const DB_PORT = config.get('ports.db');
 
 // DB setup
 mongoose.connect('mongodb://mongo:27017');
-
-// Constants
-const PORT = 3000;
 
 const Player = mongoose.model('Player', {
     name: String,
