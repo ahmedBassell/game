@@ -9,7 +9,7 @@ const PORT = config.get('ports.port');
 const DB_PORT = config.get('ports.db');
 
 // DB setup
-mongoose.connect('mongodb://mongo:' + DB_PORT);
+mongoose.connect('mongodb://mongo:' + DB_PORT, function(err) { if (err) console.log(err); });
 
 const Player = mongoose.model('Player', {
     name: String,

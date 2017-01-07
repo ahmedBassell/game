@@ -4,6 +4,6 @@ game:
 
 mongo:
   volumes:
-    - ./dev-data:/dev-data/dev-db
+    - ./dev-data:/data/db
   ports:
     - "27012:27012"
