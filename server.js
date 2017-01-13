@@ -18,6 +18,10 @@ const Player = mongoose.model('Player', {
 
 // App
 const app = express();
+
+// Use express static middleware to serve static files
+app.use(express.static('public'));
+
 app.get('/add', (req, res) => {
 
     var player = new Player({
@@ -34,7 +38,7 @@ app.get('/add', (req, res) => {
     });
     res.send({
         status: 'OK'
-    })
+    });
 });
 
 app.get('/players', (req, res) => {
@@ -42,20 +46,20 @@ app.get('/players', (req, res) => {
         if (err) return console.error(err);
         console.log(players);
         res.send(players);
-    })
-})
+    });
+});
 
 app.get('/clear', (req, res) => {
-    mongoose.connection.db.dropDatabase()
+    mongoose.connection.db.dropDatabase();
     res.send({
         status: 'OK'
-    })
-})
+    });
+});
 
 app.get('/', (req, res) => {
     console.log('hello again');
     res.send('hello\nYEEEEY! ^_^');
-})
+});
 
 app.listen(PORT);
 console.log('Running on http://localhost:' + PORT);
