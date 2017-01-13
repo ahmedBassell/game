@@ -9,7 +9,7 @@
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
-    "no-console": "warn"
+    "no-console": "off"
   },
   "globals": {
     "require": 1
