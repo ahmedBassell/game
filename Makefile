@@ -1,4 +1,5 @@
 dev:
+	npm install
 	gulp tasks --env=$NODE_ENV
 	docker-compose up -d --build
 prod:
