@@ -21,6 +21,8 @@ const app = express();
 
 // Use express static middleware to serve static files
 app.use(express.static('public'));
+// app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 
 app.get('/add', (req, res) => {
 
@@ -57,8 +59,7 @@ app.get('/clear', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    console.log('hello again');
-    res.send('hello\nYEEEEY! ^_^');
+    res.render('index');
 });
 
 app.listen(PORT);
