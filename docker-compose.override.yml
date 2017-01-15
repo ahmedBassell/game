@@ -1,9 +1,0 @@
-game:
-  ports:
-    - "9000:9000"
-
-mongo:
-  volumes:
-    - ./dev-data:/data/db
-  ports:
-    - "27012:27012"
