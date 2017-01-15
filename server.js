@@ -3,10 +3,9 @@
 // Constants
 const express = require('express');
 const mongoose = require('mongoose');
-const config = require('config');
 
-const PORT = config.get('ports.port');
-const DB_PORT = config.get('ports.db');
+const PORT = 3000;
+const DB_PORT = 27017;
 
 // DB setup
 mongoose.connect('mongodb://mongo:' + DB_PORT, function(err) { if (err) console.log(err); });
