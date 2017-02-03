@@ -3,10 +3,9 @@
 // Constants
 const express = require('express');
 const mongoose = require('mongoose');
-const config = require('config');
 
-const PORT = config.get('ports.port');
-const DB_PORT = config.get('ports.db');
+const PORT = 3000;
+const DB_PORT = 27017;
 
 // DB setup
 mongoose.connect('mongodb://mongo:' + DB_PORT, function(err) { if (err) console.log(err); });
@@ -18,6 +17,12 @@ const Player = mongoose.model('Player', {
 
 // App
 const app = express();
+
+// Use express static middleware to serve static files
+app.use(express.static('public'));
+// app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+
 app.get('/add', (req, res) => {
 
     var player = new Player({
@@ -34,7 +39,7 @@ app.get('/add', (req, res) => {
     });
     res.send({
         status: 'OK'
-    })
+    });
 });
 
 app.get('/players', (req, res) => {
@@ -42,20 +47,19 @@ app.get('/players', (req, res) => {
         if (err) return console.error(err);
         console.log(players);
         res.send(players);
-    })
-})
+    });
+});
 
 app.get('/clear', (req, res) => {
-    mongoose.connection.db.dropDatabase()
+    mongoose.connection.db.dropDatabase();
     res.send({
         status: 'OK'
-    })
-})
+    });
+});
 
 app.get('/', (req, res) => {
-    console.log('hello again');
-    res.send('hello\nYEEEEY! ^_^');
-})
+    res.render('index');
+});
 
 app.listen(PORT);
 console.log('Running on http://localhost:' + PORT);
