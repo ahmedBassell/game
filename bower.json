@@ -1,0 +1,20 @@
+{
+  "name": "docker_web_app",
+  "description": "Node.js on Docker",
+  "main": "server.js",
+  "authors": [
+    "First Last <first.last@example.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ahmedBassell/game",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.4.2"
+  }
+}
