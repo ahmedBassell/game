@@ -54,7 +54,7 @@ gulp.task('scripts', function() {
       .pipe(gutil.env.env === 'production' ? rename({suffix: '.min'}) : gutil.noop())
       .pipe(gutil.env.env === 'production' ? uglify() : gutil.noop())
       .pipe(gulp.dest('public/javascripts'))
-      .pipe(notify({ message: 'Scripts Task Done' }));
+      .pipe(gutil.env.env === 'local' ? notify({ message: 'Scripts Task Done' }) : gutil.noop());
 });
 
 gulp.task('stylesheets', function() {
@@ -65,5 +65,5 @@ gulp.task('stylesheets', function() {
     .pipe(sourcemaps.write())
     .pipe(gutil.env.env === 'production' ? cleanCss() : gutil.noop())
     .pipe(gulp.dest('public/stylesheets'))
-    .pipe(notify({ message: 'Stylesheets Task Done' }));
+    .pipe(gutil.env.env === 'local' ? notify({ message: 'Stylesheets Task Done' }) : gutil.noop());
 });
