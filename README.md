@@ -1,9 +1,12 @@
-# Game
+# Agar Game
 
-build in dev mode:
+### Getting started
 
-`docker-compose up -d --build`
+you will need to install
+- [docker](https://docs.docker.com/engine/installation/)
+- Node
+- ruby for sass
 
-in production mode:
+To build in local mode run the following :
 
-`docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build`
+  `make local`
