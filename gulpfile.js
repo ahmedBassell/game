@@ -8,12 +8,21 @@ var gulp   = require('gulp'),
     rename = require('gulp-rename'),
     sass = require('gulp-sass'),
     cleanCss = require('gulp-clean-css'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    wiredep = require('wiredep').stream;
 
 // define the default task and add the watch task to it
-gulp.task('default', ['tasks', 'watch']);
+gulp.task('default', ['tasks', 'watch', 'bower']);
 
-gulp.task('tasks', ['lintTask', 'scripts', 'stylesheets']);
+gulp.task('tasks', ['lintTask', 'scripts', 'stylesheets', 'bower']);
+
+gulp.task('bower', function() {
+    gulp.src('./views/index.html')
+        .pipe(wiredep({}))
+        .pipe(gulp.dest('./public'));
+    gulp.src('./bower_components/**/*')
+        .pipe(gulp.dest('./public/bower_components'));
+});
 
 gulp.task('lint', () => {
     return gulp.src('src/js/**/*.js')
@@ -45,16 +54,16 @@ gulp.task('scripts', function() {
       .pipe(gutil.env.env === 'production' ? rename({suffix: '.min'}) : gutil.noop())
       .pipe(gutil.env.env === 'production' ? uglify() : gutil.noop())
       .pipe(gulp.dest('public/javascripts'))
-      .pipe(notify({ message: 'Scripts Task Done' }));
+      .pipe(gutil.env.env === 'local' ? notify({ message: 'Scripts Task Done' }) : gutil.noop());
 });
 
 gulp.task('stylesheets', function() {
-    return gulp.src('src/scss/**/*.scss')
+    return gulp.src('src/scss/main.scss')
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(concat('styles.css'))
     .pipe(sourcemaps.write())
     .pipe(gutil.env.env === 'production' ? cleanCss() : gutil.noop())
     .pipe(gulp.dest('public/stylesheets'))
-    .pipe(notify({ message: 'Stylesheets Task Done' }));
+    .pipe(gutil.env.env === 'local' ? notify({ message: 'Stylesheets Task Done' }) : gutil.noop());
 });
