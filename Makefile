@@ -1,6 +1,8 @@
 local:
 	npm install
-	gulp tasks --env=$NODE_ENV
+	npm install -g bower gulp
+	bower install
+	gulp tasks --env=${NODE_ENV}
 	docker-compose -f docker-compose.local.yml up -d --build
 dev:
 	docker-compose up -d --build
