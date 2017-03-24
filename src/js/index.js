@@ -1,1 +1,1 @@
-console.log('hiss');
+import hello from './hello.jsx';
