@@ -14,7 +14,7 @@ RUN gem install sass
 RUN npm install -g bower gulp
 COPY . /usr/src/app
 RUN bower install --root-allow
-RUN npm install && npm cache clean
+RUN npm install
 RUN gulp tasks
 
 CMD ["npm", "start"]
