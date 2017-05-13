@@ -2,7 +2,7 @@ import React from 'react';
 import Mousetrap from 'mousetrap';
 
 const io = require('socket.io-client');
-const socket = io('http://localhost:9000');
+const socket = io('/');
 
 export default class Map extends React.Component {
     constructor(props) {
